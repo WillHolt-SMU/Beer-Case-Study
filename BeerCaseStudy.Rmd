@@ -1,0 +1,77 @@
+---
+title: "BeerCaseStudy"
+author: "Will Holt and Yejur Kunwar"
+date: "October 17, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Intro: Prior to working with the data Last Call Consluting (LCC) had to clean the respective data sets.
+Changing column names to make them human readable and to also allow for an efficient merge
+
+load the data
+```{r}
+Beer <- read.csv("Beers.csv")
+Breweries <- read.csv("Breweries.csv")
+```
+
+
+```{r}
+names(Beer) <- c("BeerName", "BeerID", "ABV", "IBU", "BreweryID", "BeerStyle", "Ounces")
+str(Beer)
+```
+
+```{r}
+names(Breweries) <- c("BreweryID", "BreweryName", "BreweryCity", "BreweryState")
+str(Breweries)
+```
+
+
+
+###1. How many breweries are present in each state?
+```{r}
+StateBreweries <- as.data.frame(table(Breweries$BreweryState))
+names(StateBreweries) <- c("BreweryState", "BreweryCount")
+StateBreweries
+```
+
+
+###2. Merge beer data with the breweries data. Print the first 6 observations and the last six observations to check the merged file.
+
+```{r}
+BeerStudy <- merge(Beer,Breweries,by="BreweryID")
+head(BeerStudy, 6)
+tail(BeerStudy, 6)
+```
+
+
+### 3. Report the number of NA's in each column.
+
+```{r}
+colSums(is.na(BeerStudy))
+```
+
+### 4. Compute the median alcohol content and international bitterness unit for each state. Plot a bar chart to compare.
+
+#### Complete plot
+```{r}
+ABVMedian <- aggregate(BeerStudy$ABV ~ BeerStudy$BreweryState, data = BeerStudy, median)
+IBUMedian <- aggregate(BeerStudy$IBU ~ BeerStudy$BreweryState, data = BeerStudy, median)
+ABV_IBU_Medians <- merge(ABVMedian, IBUMedian, by = "BeerStudy$BreweryState", all = TRUE)
+```
+
+
+### 5. Which state has the maximum alcoholic (ABV) beer? Which state has the most bitter (IBU) beer?
+## clean the column names
+```{r}
+ABVMax <- aggregate(BeerStudy$ABV ~ BeerStudy$BreweryState, data = BeerStudy, max)
+#code for max MaxABV_State <- all[order(-ABVMax$BeerStudy$ABV),]
+
+```
+
+### 6. Summary statistics for the ABV variable.
+7. Is there an apparent relationship between the bitterness of the
+beer and its alcoholic content? Draw a scatter plot.
