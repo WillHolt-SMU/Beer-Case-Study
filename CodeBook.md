@@ -7,6 +7,12 @@
 
 Abstract:  The BeerStudy dataset was merged from _______ dataset to answer questions asked by client for opening a Brewery plant.
 
+
+|BeerStudy    | Dataset            |Information|	
+|Datasets Used|	       	           |Source	    |
+|Attributes   |Number of Attributes|           |	
+|Missing values	
+			
  |Data Set Characteristic|:------:|-----|
 
 ## Source
