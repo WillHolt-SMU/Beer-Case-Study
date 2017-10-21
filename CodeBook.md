@@ -1,4 +1,4 @@
-# LAST CALL CONSULTING (LCC)
+# LAST CALL CONSULTING (LCC).  (now need image)
 
 ## Beer Case Study Dataset
 
@@ -7,13 +7,19 @@
 
 Abstract:  The BeerStudy dataset was merged from _______ dataset to answer questions asked by client for opening a Brewery plant.
 
+TEST TABLE
 
-|BeerStudy    | Dataset            |Information|	
-|Datasets Used|	       	           |Source	    |
+
+|BeerStudy    | Dataset            |Information|
+--- | --- | ---
+*Datasets Used* | `more` | **Source**	    
 |Attributes   |Number of Attributes|           |	
 |Missing values	
 			
  |Data Set Characteristic|:------:|-----|
+ 
+ 
+ 
 
 ## Source
 
