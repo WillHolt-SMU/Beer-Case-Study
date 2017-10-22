@@ -1,10 +1,11 @@
+![alt text][logo]
 ---
 title: "BeerCaseStudy"
 author: "Will Holt and Yejur Kunwar"
 date: "October 17, 2017"
 output: html_document
 ---
-
+[logo]: http://www.reyesbeveragegroup.com/Global/Logos/RBG-wheat-shield.png
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
