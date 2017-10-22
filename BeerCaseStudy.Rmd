@@ -1,35 +1,31 @@
 ![alt text][logo]
 ---
-title: "BeerCaseStudy"
+title: "Beer Case Study"
 author: "Will Holt and Yejur Kunwar"
 date: "October 17, 2017"
 output: html_document
 ---
-[logo]: http://www.reyesbeveragegroup.com/Global/Logos/RBG-wheat-shield.png
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r}
-
-```
-
-# Intro: Prior to working with the data Last Call Consluting (LCC) had to clean the respective data sets.
+### Background:
+Reyes Beverage Group (Reyes), one of the largest beer distributor in the United States, is looking to brew its own beer in an effort to expand its own business. Specifically, Reyes is looking to produce seasonal beers with an alcohol by volume (ABV) content between 0.05 and 0.07. Reyes contacted Last Call Consulting (LCC) to determine states that are potential markets. 
 
 
-Background
-
-Scope
-
-Deliverables/Key Findings
+### Scope:
+LCC cleaned, and analyzed a list of beers and breweries by state from Open Beer DB (https://openbeerdb.com/). The analysis identified the top three states Reyes should target for its seasonal beers.
 
 
-Changing column names to make them human readable and to also allow for an efficient merge
-Talk about number of breweries in each state
-load the data
+### Key Findings:
+LCC determined that more than 75% of the beers were greater than or equal to 0.05 and that 25% of beers were greater than or equal to 0.067. This suggests that Reyes is producing a beer with an ABV that is not unsual for the market.
+LCC identified Connecticut (CT), Maryland (MD), and Illinois (IL) as the three markets to target for their initial line of seasonal beers. CT, MD, and IL currently have eight, seven and 18 breweries respectively and a median ABV of 0.06 for CT, 0.058 for MD, and 0.058 for IL. CT's relative proiximity to New York City (NYC) may be advantageous as word of the new beer may spread amongst individuals who commute from CT to NYC. MD's close proximity to Washington D.C. (DC) could help Reyes gain entry to the DC market, which only has one brewery. IL allows Reyes to save money on shipping costs as it is located in Chicago and can leverage its relationships with Chicago business to help launch its product. As the product grows, Minnesota (MN) could be another midwestern market for Reyes to targt as it has 12 breweries and a median ABV of 0.056.
 
-Reyes Beverage Group. Chicago, Illinois
-
+### Deliverables:
+LCC provided an RMarkdown file, which included the associated codes so that Reyes can reproduce the research conducted and follow-up with any questions as needed. 
+In addition, LCC produced a codebook and ReadMe file to ensure alignment and proper understanding of the variables and findings.
+Within the RMarkedown file are key questions posed by Reyes CIO, Faizan Javed. 
 ```{r}
 Beer <- read.csv("Beers.csv")
 Breweries <- read.csv("Breweries.csv")
@@ -49,7 +45,8 @@ str(Breweries)
 
 
 ###1. How many breweries are present in each state?
-Make comment about breweries
+There were instances in which a brewery appeared more than once in a state but was counted twice to show how breweries are successful in multiple cities throughout a state and to truly represent the number of breweries per state.
+Should the CIO, Faizan Javed need to understand the unique count based on name only, LCC will provide updated findings.
 ```{r}
 #A unique brewery is defined as a Brewery appearing in a different city (e.g. Victory Brewing, Kennett; Victory Brewing, Downingtown)
 StateBreweries <- as.data.frame(table(Breweries$BreweryState))
@@ -75,7 +72,6 @@ colSums(is.na(BeerStudy))
 
 ### 4. Compute the median alcohol content and international bitterness unit for each state. Plot a bar chart to compare.
 
-#### Complete plot
 ```{r}
 library(ggplot2)
 #First set of code represents ABV Median by State
@@ -120,4 +116,3 @@ labs(title = "Correlation of ABV and IBU", x = "ABV", y = "IBU")
 #The following code will calcuate the r value and represents the coorelation between ABV and IBU
 cor.test(BeerStudy$ABV, BeerStudy$IBU)
 ```
-
