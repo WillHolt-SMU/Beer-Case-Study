@@ -1,5 +1,8 @@
-# LAST CALL CONSULTING (LCC).  (now need image)
+![alt text][logo]
 
+
+# LAST CALL CONSULTING (LCC).
+[logo]: http://www.reyesbeveragegroup.com/Global/Logos/RBG-wheat-shield.png
 ## Beer Case Study Dataset
 
 * Dataset Download link:
