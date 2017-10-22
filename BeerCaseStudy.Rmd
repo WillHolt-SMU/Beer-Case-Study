@@ -1,0 +1,122 @@
+---
+title: "BeerCaseStudy"
+author: "Will Holt and Yejur Kunwar"
+date: "October 17, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+```
+
+# Intro: Prior to working with the data Last Call Consluting (LCC) had to clean the respective data sets.
+
+
+Background
+
+Scope
+
+Deliverables/Key Findings
+
+
+Changing column names to make them human readable and to also allow for an efficient merge
+Talk about number of breweries in each state
+load the data
+
+Reyes Beverage Group. Chicago, Illinois
+
+```{r}
+Beer <- read.csv("Beers.csv")
+Breweries <- read.csv("Breweries.csv")
+```
+
+
+```{r}
+names(Beer) <- c("BeerName", "BeerID", "ABV", "IBU", "BreweryID", "BeerStyle", "Ounces")
+str(Beer)
+```
+
+```{r}
+names(Breweries) <- c("BreweryID", "BreweryName", "BreweryCity", "BreweryState")
+str(Breweries)
+```
+
+
+
+###1. How many breweries are present in each state?
+Make comment about breweries
+```{r}
+#A unique brewery is defined as a Brewery appearing in a different city (e.g. Victory Brewing, Kennett; Victory Brewing, Downingtown)
+StateBreweries <- as.data.frame(table(Breweries$BreweryState))
+names(StateBreweries) <- c("BreweryState", "BreweryCount")
+StateBreweries
+```
+
+
+###2. Merge beer data with the breweries data. Print the first 6 observations and the last six observations to check the merged file.
+
+```{r}
+BeerStudy <- merge(Beer,Breweries,by="BreweryID")
+head(BeerStudy, 6)
+tail(BeerStudy, 6)
+```
+
+
+### 3. Report the number of NA's in each column.
+
+```{r}
+colSums(is.na(BeerStudy))
+```
+
+### 4. Compute the median alcohol content and international bitterness unit for each state. Plot a bar chart to compare.
+
+#### Complete plot
+```{r}
+library(ggplot2)
+#First set of code represents ABV Median by State
+ABVMedian <- aggregate(BeerStudy$ABV ~ BeerStudy$BreweryState, data = BeerStudy, median)
+names(ABVMedian) <- c("State", "ABV")
+ABVMedian <- ABVMedian[order(ABVMedian$ABV,decreasing = TRUE),]
+ggplot(data = ABVMedian, aes(x=reorder(ABVMedian$State, -ABVMedian$ABV), y=ABVMedian$ABV)) +
+geom_bar(stat = "identity") +
+labs(title = "ABV Median by State", x = "State", y = "Median")
+#Second set of code represents IBU Median by State
+IBUMedian <- aggregate(BeerStudy$IBU ~ BeerStudy$BreweryState, data = BeerStudy, median)
+names(IBUMedian) <- c("State", "IBU")
+IBUMedian <- IBUMedian[order(IBUMedian$IBU,decreasing = TRUE),]
+ggplot(data = IBUMedian, aes(x=reorder(IBUMedian$State, -IBUMedian$IBU), y=IBUMedian$IBU)) +
+geom_bar(stat = "identity") +
+labs(title = "IBU Median by State", x = "State", y = "Median")
+```
+
+
+### 5. Which state has the maximum alcoholic (ABV) beer? Which state has the most bitter (IBU) beer?
+## clean the column names
+```{r}
+#First code identifies the state with the highest ABV
+head(ABVMedian, 1)
+#Second code identifies the state with the highest IBU
+head(IBUMedian, 1)
+```
+
+### 6. Summary statistics for the ABV variable.
+
+```{r}
+summary(BeerStudy$ABV)
+```
+
+### 7. Is there an apparent relationship between the bitterness of the beer and its alcoholic content? Draw a scatter plot.
+Based on the visuals produced from the following code and an r-value of 0.6706215 we can see there is a moderate correlation between ABV and IBU in this particular dataset.
+
+```{r}
+ggplot(BeerStudy, aes(x=BeerStudy$ABV, y=BeerStudy$IBU)) + 
+geom_point(size=2, shape=23) + 
+labs(title = "Correlation of ABV and IBU", x = "ABV", y = "IBU")
+#The following code will calcuate the r value and represents the coorelation between ABV and IBU
+cor.test(BeerStudy$ABV, BeerStudy$IBU)
+```
+
