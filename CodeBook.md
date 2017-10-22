@@ -1,13 +1,13 @@
 ![alt text][logo]*^	
 
-# Prepared by LAST CALL CONSULTING (LCC).
+# Prepared by LAST CALL CONSULTING (LCC)
 [logo]: http://www.reyesbeveragegroup.com/Global/Logos/RBG-wheat-shield.png
 
 ## Beer Case Study Dataset
 
 * Dataset Download link: [Dataset](https://openbeerdb.com/)
 
-Abstract:  The BeerStudy dataset was created by merging datasets presented in source. This new dataset was created to answer few questions asked by fictional management team at Reyes Beverage Group.
+Abstract:  The BeerStudy dataset was created by merging a beer and brewery dataset presented in source. This new dataset was created to answer business questions asked by a fictional management team at Reyes Beverage Group.
 
 
 |BeerStudy  Dataset  |             |          |
@@ -32,8 +32,7 @@ The BeerStudy dataset consists of 10 different variables assigned created by mer
 
 BeerStudy: Data frame containing 2410 observations with 10 variables
 
-|Variables  | Types            | Range | Information          |
---- | --- | --- | ---
+|Variables  | Types | Range | Information 
  |BreweryID   |Integer|  1-558| Unique Brewery ID|
  | BeerName   | Factor| 2305 levels | Names of Beers|
  | BeerID      | Integer | Values  | Unique Beer ID|
@@ -48,7 +47,7 @@ BeerStudy: Data frame containing 2410 observations with 10 variables
 ***Note: Any Brewery located in same state but different city is treated as unique brewery
 
 ## Codes and Conclusion
-This explains the codes and conclusion derived from Case Study markdown file shared in github.
+This explains the codes and conclusions derived from the Case Study markdown file shared in GitHub.
 
 1. Read Breweries.csv and Beers.csv data, changed the names to human readable attributes.
 2. Answered breweries present in each state by assigning it to dataframe named StateBreweries.
