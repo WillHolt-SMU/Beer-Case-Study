@@ -33,6 +33,7 @@ The BeerStudy dataset consists of 10 different variables assigned created by mer
 BeerStudy: Data frame containing 2410 observations with 10 variables
 
 |Variables  | Types | Range | Information 
+--- | --- | --- | ---
  |BreweryID   |Integer|  1-558| Unique Brewery ID|
  | BeerName   | Factor| 2305 levels | Names of Beers|
  | BeerID      | Integer | Values  | Unique Beer ID|
