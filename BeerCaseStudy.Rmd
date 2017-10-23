@@ -90,7 +90,7 @@ labs(title = "IBU Median by State", x = "State", y = "Median")
 
 
 ### 5. Which state has the maximum alcoholic (ABV) beer? Which state has the most bitter (IBU) beer?
-## clean the column names
+
 ```{r}
 #First code identifies the state with the highest ABV
 head(ABVMedian, 1)
