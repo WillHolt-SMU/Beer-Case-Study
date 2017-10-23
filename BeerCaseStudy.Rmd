@@ -1,14 +1,12 @@
+---
+Title: "Beer Case Study"
+Author: "Will Holt and Yejur Kunwar"
+Date: "October 17, 2017"
+Output: html_document
+---
 ![alt text][logo]
----
-title: "Beer Case Study"
-author: "Will Holt and Yejur Kunwar"
-date: "October 17, 2017"
-output: html_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+# Beer Case Study
+[logo]: http://www.reyesbeveragegroup.com/Global/Logos/RBG-wheat-shield.png
 
 ### Background:
 Reyes Beverage Group (Reyes), one of the largest beer distributor in the United States, is looking to brew its own beer in an effort to expand its own business. Specifically, Reyes is looking to produce seasonal beers with an alcohol by volume (ABV) content between 0.05 and 0.07. Reyes contacted Last Call Consulting (LCC) to determine states that are potential markets. 
@@ -116,3 +114,6 @@ labs(title = "Correlation of ABV and IBU", x = "ABV", y = "IBU")
 #The following code will calcuate the r value and represents the coorelation between ABV and IBU
 cor.test(BeerStudy$ABV, BeerStudy$IBU)
 ```
+
+
+* Link for github: https://github.com/WillHolt-SMU/Beer-Case-Study
